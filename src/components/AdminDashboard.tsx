@@ -51,23 +51,21 @@ export default function AdminDashboard() {
   const [filter, setFilter] = useState<'all' | 'pending' | 'contacted' | 'completed' | 'cancelled'>('all');
 
   useEffect(() => {
-    const unsubscribeAuth = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
-      if (currentUser) {
-        // Check if user is admin
-        try {
-          const adminDoc = await getDoc(doc(db, 'admins', currentUser.uid));
-          if (adminDoc.exists() || currentUser.email === 'saransh1860@gmail.com') {
-            setIsAdmin(true);
-          } else {
-            setIsAdmin(false);
-          }
-        } catch (error) {
-          console.error("Error checking admin status:", error);
-          // Fallback to email check if Firestore read fails
-          if (currentUser.email === 'saransh1860@gmail.com') {
-            setIsAdmin(true);
-          } else {
+    const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+      setUser(user);
+      if (user) {
+        // Simple check if user is the primary admin from config/rules
+        const isPrimaryAdmin = user.email === 'saransh1860@gmail.com';
+        
+        if (isPrimaryAdmin) {
+          setIsAdmin(true);
+        } else {
+          // Check if user exists in the admins collection
+          try {
+            const adminDoc = await getDoc(doc(db, 'admins', user.uid));
+            setIsAdmin(adminDoc.exists());
+          } catch (error) {
+            console.error("Admin check failed", error);
             setIsAdmin(false);
           }
         }
@@ -120,15 +118,18 @@ export default function AdminDashboard() {
   }, [isAdmin]);
 
   const handleLogin = async () => {
-    const provider = new GoogleAuthProvider();
     try {
+      const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Login failed", error);
     }
   };
 
-  const handleLogout = () => signOut(auth);
+  const handleLogout = async () => {
+    await signOut(auth);
+    window.location.hash = '';
+  };
 
   const updateStatus = async (id: string, newStatus: Consultation['status']) => {
     try {
@@ -145,58 +146,60 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-luxury-bg flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-luxury-gold border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-luxury-bg flex flex-col items-center justify-center p-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-md bg-white p-12 rounded-3xl shadow-xl border border-luxury-ink/5"
-        >
-          <div className="w-20 h-20 bg-luxury-gold/10 rounded-full flex items-center justify-center mx-auto mb-8">
-            <ClipboardList className="w-10 h-10 text-luxury-gold" />
-          </div>
-          <h1 className="text-3xl font-serif mb-4 text-luxury-ink">Admin Access</h1>
-          <p className="text-luxury-ink/60 mb-8">
-            Please log in with your authorized account to view booked consultations.
-          </p>
-          <button
-            onClick={handleLogin}
-            className="w-full bg-luxury-ink text-white py-4 rounded-full flex items-center justify-center gap-3 hover:bg-luxury-gold transition-all duration-300 shadow-lg font-medium"
-          >
-            <LogIn className="w-5 h-5" /> Sign in with Google
-          </button>
-        </motion.div>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-4 border-luxury-gold border-t-transparent rounded-full animate-spin" />
+          <p className="text-luxury-ink/40 uppercase tracking-widest text-[10px]">Authorizing...</p>
+        </div>
       </div>
     );
   }
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-luxury-bg flex flex-col items-center justify-center p-6 text-center">
-        <div className="max-w-md bg-white p-12 rounded-3xl shadow-xl border border-red-100">
-          <div className="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-8">
-            <ShieldAlert className="w-10 h-10 text-red-500" />
+      <div className="min-h-screen bg-luxury-bg flex items-center justify-center p-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white p-12 rounded-[40px] shadow-2xl border border-luxury-ink/5 max-w-md w-full text-center"
+        >
+          <div className="w-20 h-20 bg-luxury-ink rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-xl transform -rotate-12">
+            <ShieldAlert className="w-10 h-10 text-luxury-gold" />
           </div>
-          <h1 className="text-3xl font-serif mb-4 text-red-600">Access Denied</h1>
-          <p className="text-luxury-ink/60 mb-8">
-            Your account ({user.email}) is not authorized to access this dashboard. 
-            Please contact the system administrator.
+          <h2 className="text-3xl font-serif mb-4">Restricted Access</h2>
+          <p className="text-luxury-ink/60 mb-10 leading-relaxed">
+            This portal is only accessible to authorized design administrators of Amaira Interiors.
           </p>
-          <div className="space-y-4">
-            <button
-               onClick={handleLogout}
-               className="w-full border border-luxury-ink/10 text-luxury-ink py-4 rounded-full flex items-center justify-center gap-3 hover:bg-luxury-ink hover:text-white transition-all duration-300 font-medium"
+          
+          {user ? (
+            <div className="space-y-6">
+              <div className="bg-red-50 text-red-600 p-4 rounded-2xl text-xs flex items-center gap-3">
+                <XCircle className="w-5 h-5" />
+                <span>Account <strong>{user.email}</strong> is not authorized.</span>
+              </div>
+              <button 
+                onClick={handleLogout}
+                className="w-full bg-luxury-ink text-white py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-black transition-all"
+              >
+                Try Different Account
+              </button>
+            </div>
+          ) : (
+            <button 
+              onClick={handleLogin}
+              className="w-full bg-luxury-ink text-white py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-black transition-all flex items-center justify-center gap-3 group"
             >
-              <LogOut className="w-5 h-5" /> Sign Out
+              <LogIn className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              Sign in with Google
             </button>
-          </div>
-        </div>
+          )}
+          
+          <button 
+            onClick={() => window.location.hash = ''} 
+            className="mt-8 text-[10px] uppercase tracking-[0.2em] opacity-40 hover:opacity-100 transition-opacity"
+          >
+            ← Return to Website
+          </button>
+        </motion.div>
       </div>
     );
   }
@@ -212,19 +215,19 @@ export default function AdminDashboard() {
             </div>
             <div>
               <h1 className="text-xl font-serif">Admin Portal</h1>
-              <p className="text-[10px] uppercase tracking-[0.2em] opacity-60">Consultation Bookings</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] opacity-60">Verified Session</p>
             </div>
           </div>
           
           <div className="flex items-center gap-6">
             <div className="hidden md:block text-right">
-              <p className="text-sm font-medium">{user.displayName}</p>
-              <p className="text-[10px] opacity-60">{user.email}</p>
+              <p className="text-sm font-medium">{user?.displayName}</p>
+              <p className="text-[10px] opacity-60">{user?.email}</p>
             </div>
             <button
               onClick={handleLogout}
               className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
-              title="Logout"
+              title="Return Home"
             >
               <LogOut className="w-5 h-5" />
             </button>
@@ -406,7 +409,7 @@ export default function AdminDashboard() {
 
       <footer className="py-12 bg-white border-t border-luxury-ink/5 mt-24">
         <div className="container mx-auto px-6 text-center">
-            <p className="text-[10px] uppercase tracking-[0.2em] opacity-40">Design Excel Architects • Private Admin Panel</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] opacity-40">Amaira Interiors • Private Admin Panel</p>
         </div>
       </footer>
     </div>

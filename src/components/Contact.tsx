@@ -106,7 +106,7 @@ export default function Contact() {
             
             <div className="mt-12 overflow-hidden rounded-2xl h-64 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700 shadow-2xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.567085739097!2d76.993478!3d29.89163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e6fa39f5f0b5d%3A0x6e2a2c7e0c0c0c0c!2sModel%20Town%2C%20Karnal!5e0!3m2!1sen!2sin!4v1714492000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.567085739097!2d76.993478!3d29.69163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e6fa39f5f0b5d%3A0x6e2a2c7e0c0c0c0c!2sAmaira%20Interiors!5e0!3m2!1sen!2sin!4v1714492000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

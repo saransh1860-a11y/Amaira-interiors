@@ -18,6 +18,9 @@ export default function Footer() {
                 {link}
               </a>
             ))}
+            <a href="#admin" className="text-[10px] uppercase tracking-widest text-white/20 hover:text-luxury-gold transition-colors">
+              Admin
+            </a>
           </div>
           
           <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-accent">

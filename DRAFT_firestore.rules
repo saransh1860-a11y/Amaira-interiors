@@ -1,0 +1,82 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 0. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helpers ---
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == 'saransh1860@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Validations ---
+
+    function isValidConsultation(data) {
+      return data.keys().hasAll(['name', 'phone', 'service', 'status', 'createdAt']) &&
+             data.keys().size() == 5 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.phone is string && data.phone.size() >= 10 && data.phone.size() <= 20 &&
+             data.service is string && data.service.size() <= 50 &&
+             data.status in ['pending', 'contacted', 'completed', 'cancelled'] &&
+             data.createdAt == request.time;
+    }
+
+    function isValidContact(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'message', 'createdAt']) &&
+             data.keys().size() == 5 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             data.email is string && data.email.size() <= 100 &&
+             data.phone is string && data.phone.size() >= 10 && data.phone.size() <= 20 &&
+             data.message is string && data.message.size() <= 2000 &&
+             data.createdAt == request.time;
+    }
+
+    // --- Rules ---
+
+    match /consultations/{consultationId} {
+      allow create: if isValidConsultation(incoming());
+      // Admin only access
+      allow read, delete: if isAdmin();
+      allow update: if isAdmin() && isValidConsultation(incoming()) && (
+        // Only allow status changes if it's an admin update
+        incoming().diff(existing()).affectedKeys().hasOnly(['status']) ||
+        // or allow full updates if needed by admin
+        incoming().diff(existing()).affectedKeys().size() > 0
+      );
+    }
+
+    match /contacts/{contactId} {
+      allow create: if isValidContact(incoming());
+      // Admin only access
+      allow read, delete: if isAdmin();
+    }
+
+    match /admins/{adminId} {
+      allow read: if isSignedIn() && (request.auth.uid == adminId || isAdmin());
+      // No client-side creation/updates for admins
+      allow write: if false;
+    }
+  }
+}

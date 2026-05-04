@@ -18,20 +18,22 @@ import AdminDashboard from './components/AdminDashboard';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [currentHash, setCurrentHash] = useState(window.location.hash);
 
   useEffect(() => {
-    const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname);
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
     };
 
-    window.addEventListener('popstate', handleLocationChange);
-    // Listen for custom trigger if any
-    return () => window.removeEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   // Simple routing
-  if (currentPath === '/admin') {
+  const searchParams = new URLSearchParams(window.location.search);
+  const isAdminView = currentHash === '#admin' || searchParams.get('admin') === 'true';
+
+  if (isAdminView) {
     return <AdminDashboard />;
   }
 

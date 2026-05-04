@@ -4,14 +4,14 @@ import { Quote, Star } from 'lucide-react';
 const testimonials = [
   {
     name: 'Sanjeev Sharma',
-    role: 'Homeowner, Ambala',
-    text: 'Design Excel Architects transformed our old house into a modern masterpiece. Their attention to detail is unmatched, and they delivered exactly what we dreamed of, on time.',
+    role: 'Homeowner, Karnal',
+    text: 'Amaira Interiors transformed our old house into a modern masterpiece. Their attention to detail with the PVC panels and wallpaper is unmatched.',
     rating: 5,
   },
   {
     name: 'Priyanka Gupta',
     role: 'Business Owner',
-    text: 'Highly professional team. They designed my boutique in Ambala Cantt, and everyone who walks in asks about the interior. Truly premium service!',
+    text: 'Highly professional team. They designed my boutique in Karnal, and everyone who walks in asks about the interior. Truly premium service!',
     rating: 5,
   },
   {
