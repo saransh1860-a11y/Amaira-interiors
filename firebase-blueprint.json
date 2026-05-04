@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "Consultation": {
+      "title": "Consultation Request",
+      "description": "A request for a free design consultation from a potential client.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Full name of the client."
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact phone number."
+        },
+        "service": {
+          "type": "string",
+          "description": "The specific service the client is interested in."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "contacted", "completed", "cancelled"],
+          "description": "The current status of the consultation request."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the request was created."
+        }
+      },
+      "required": ["name", "phone", "service", "status", "createdAt"]
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "A message sent via the contact form.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the sender."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the sender."
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number of the sender."
+        },
+        "message": {
+          "type": "string",
+          "description": "Message content."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the message was sent."
+        }
+      },
+      "required": ["name", "email", "phone", "message", "createdAt"]
+    },
+    "Admin": {
+      "title": "Administrator",
+      "description": "A user with administrative privileges.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of the admin."
+        }
+      }
+    }
+  },
+  "firestore": {
+    "consultations/{consultationId}": {
+      "schema": "Consultation",
+      "description": "Collection of consultation requests."
+    },
+    "contacts/{contactId}": {
+      "schema": "ContactMessage",
+      "description": "Collection of contact form messages."
+    },
+    "admins/{adminId}": {
+      "schema": "Admin",
+      "description": "Collection of admin users."
+    }
+  }
+}
