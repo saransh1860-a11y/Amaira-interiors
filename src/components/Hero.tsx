@@ -43,7 +43,7 @@ export default function Hero({ onConsultationClick }: HeroProps) {
                 onClick={onConsultationClick}
                 className="w-full sm:w-auto bg-luxury-ink text-white px-10 py-5 rounded-full flex items-center justify-center gap-3 hover:bg-luxury-gold transition-all duration-500 group shadow-lg"
               >
-                <span>Request Quote</span>
+                <span>Get Free Consultation</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
               

@@ -64,7 +64,22 @@ export default function Contact() {
                 <div>
                   <h4 className="text-sm uppercase tracking-widest font-accent font-bold opacity-60 mb-2">Our Studio</h4>
                   <p className="text-lg font-light max-w-xs">
-                    Vashishth Design Studio, Mugal Canal Rd, Market, Karnal, Haryana 132001
+                    <a 
+                      href="https://www.google.com/maps/dir/?api=1&destination=Vashishth+Design+Studio+Mugal+Canal+Rd+Market+Karnal+Haryana+132001" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="hover:text-luxury-gold transition-colors block"
+                    >
+                      Vashishth Design Studio, Mugal Canal Rd, Market, Karnal, Haryana 132001
+                    </a>
+                    <a 
+                      href="https://www.google.com/maps/dir/?api=1&destination=Vashishth+Design+Studio+Mugal+Canal+Road+Karnal" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-luxury-gold mt-2 hover:underline"
+                    >
+                      Get Directions
+                    </a>
                   </p>
                 </div>
               </div>
@@ -106,7 +121,7 @@ export default function Contact() {
             
             <div className="mt-12 overflow-hidden rounded-2xl h-64 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700 shadow-2xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.123456789!2d76.9850!3d29.6953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e6f!2sVashishth%20Design%20Studio!5e0!3m2!1sen!2sin!4v1714492000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.457802878415!2d76.9931326!3d29.6920653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e6f96603a161f%3A0xe54fb11894d07584!2sVashishth%20Design%20Studio!5e0!3m2!1sen!2sin!4v1714890000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
