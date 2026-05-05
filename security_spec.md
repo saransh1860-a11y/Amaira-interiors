@@ -1,4 +1,4 @@
-# Security Specification - Amaira Interiors
+# Security Specification - Vashishth Design Studio
 
 ## 1. Data Invariants
 - A **Consultation** must have a name, phone, service, status, and createdAt timestamp.

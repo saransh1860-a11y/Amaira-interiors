@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: 'Sanjeev Sharma',
     role: 'Homeowner, Karnal',
-    text: 'Amaira Interiors transformed our old house into a modern masterpiece. Their attention to detail with the PVC panels and wallpaper is unmatched.',
+    text: 'Vashishth Design Studio transformed our old house into a modern masterpiece. Their expertise in refurbishment and building planning is unmatched.',
     rating: 5,
   },
   {

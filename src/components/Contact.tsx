@@ -59,12 +59,12 @@ export default function Contact() {
             <div className="space-y-10 mb-16">
               <div className="flex gap-6">
                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-luxury-gold flex-shrink-0">
-                  <MapPin className="w-5 h-5" />
+                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="text-sm uppercase tracking-widest font-accent font-bold opacity-60 mb-2">Our Studio</h4>
                   <p className="text-lg font-light max-w-xs">
-                    Amaira Interiors, 174-L, Model Town, Karnal, Haryana 132001
+                    Vashishth Design Studio, Mugal Canal Rd, Market, Karnal, Haryana 132001
                   </p>
                 </div>
               </div>
@@ -76,7 +76,7 @@ export default function Contact() {
                 <div>
                   <h4 className="text-sm uppercase tracking-widest font-accent font-bold opacity-60 mb-2">Call Us</h4>
                   <p className="text-lg font-light">
-                    <a href="tel:+919540547745" className="hover:text-luxury-gold transition-colors">095405 47745</a>
+                    <a href="tel:+919518069000" className="hover:text-luxury-gold transition-colors">095180 69000</a>
                   </p>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-sm uppercase tracking-widest font-accent font-bold opacity-60 mb-2">Email Us</h4>
-                  <p className="text-lg font-light">info@amairainteriors.com</p>
+                  <p className="text-lg font-light">contact@vashishthdesign.com</p>
                 </div>
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function Contact() {
             
             <div className="mt-12 overflow-hidden rounded-2xl h-64 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700 shadow-2xl">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.567085739097!2d76.993478!3d29.69163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e6fa39f5f0b5d%3A0x6e2a2c7e0c0c0c0c!2sAmaira%20Interiors!5e0!3m2!1sen!2sin!4v1714492000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.123456789!2d76.9850!3d29.6953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e6f!2sVashishth%20Design%20Studio!5e0!3m2!1sen!2sin!4v1714492000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

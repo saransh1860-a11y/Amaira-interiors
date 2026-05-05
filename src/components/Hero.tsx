@@ -27,15 +27,15 @@ export default function Hero({ onConsultationClick }: HeroProps) {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <span className="text-xs uppercase tracking-[0.5em] font-accent text-luxury-gold mb-6 block font-semibold">
-              Interior Decorator & PVC Dealer in Karnal
+              Interior Designer & Architectural Solutions in Karnal
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.1] mb-8 tracking-tight">
-              Design Your <br />
-              <span className="italic text-luxury-gold">Dream Space</span>
+              Crafting <br />
+              <span className="italic text-luxury-gold">Legacy Spaces</span>
             </h1>
             <p className="text-lg md:text-xl text-luxury-ink/70 leading-relaxed mb-12 max-w-xl font-light">
-              Elevate your lifestyle with premium wallpapers, PVC panels, and bespoke interior designs. 
-              The leading choice for luxury homes and commercial spaces in Karnal.
+              Specializing in refurbishments and building documentation. 
+              The leading choice for architectural planning and premium interior solutions in Karnal.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-6">
@@ -43,12 +43,12 @@ export default function Hero({ onConsultationClick }: HeroProps) {
                 onClick={onConsultationClick}
                 className="w-full sm:w-auto bg-luxury-ink text-white px-10 py-5 rounded-full flex items-center justify-center gap-3 hover:bg-luxury-gold transition-all duration-500 group shadow-lg"
               >
-                <span>Free Consultation</span>
+                <span>Request Quote</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
               
               <div className="flex items-center gap-6">
-                <a href="tel:+919540547745" className="group flex items-center gap-3 text-luxury-ink hover:text-luxury-gold transition-colors duration-300">
+                <a href="tel:+919518069000" className="group flex items-center gap-3 text-luxury-ink hover:text-luxury-gold transition-colors duration-300">
                   <div className="w-12 h-12 rounded-full border border-luxury-ink/10 flex items-center justify-center group-hover:border-luxury-gold transition-colors underline decoration-luxury-gold/30">
                     <Phone className="w-5 h-5" />
                   </div>
@@ -64,12 +64,12 @@ export default function Hero({ onConsultationClick }: HeroProps) {
               </div>
               <div className="h-10 w-[1px] bg-luxury-ink/10" />
               <div>
-                <span className="block text-2xl font-serif">9</span>
+                <span className="block text-2xl font-serif">7</span>
                 <span className="text-[10px] uppercase tracking-widest opacity-50 font-medium">Reviews</span>
               </div>
               <div className="h-10 w-[1px] bg-luxury-ink/10" />
               <div>
-                <span className="block text-2xl font-serif">8+</span>
+                <span className="block text-2xl font-serif">10+</span>
                 <span className="text-[10px] uppercase tracking-widest opacity-50 font-medium">Years Exp.</span>
               </div>
             </div>

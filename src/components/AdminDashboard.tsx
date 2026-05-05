@@ -167,7 +167,7 @@ export default function AdminDashboard() {
           </div>
           <h2 className="text-3xl font-serif mb-4">Restricted Access</h2>
           <p className="text-luxury-ink/60 mb-10 leading-relaxed">
-            This portal is only accessible to authorized design administrators of Amaira Interiors.
+            This portal is only accessible to authorized design administrators of Vashishth Design Studio.
           </p>
           
           {user ? (
@@ -409,7 +409,7 @@ export default function AdminDashboard() {
 
       <footer className="py-12 bg-white border-t border-luxury-ink/5 mt-24">
         <div className="container mx-auto px-6 text-center">
-            <p className="text-[10px] uppercase tracking-[0.2em] opacity-40">Amaira Interiors • Private Admin Panel</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] opacity-40">Vashishth Design Studio • Private Admin Panel</p>
         </div>
       </footer>
     </div>

@@ -3,34 +3,34 @@ import { Home, Paintbrush, Building2, Compass, FileText, ArrowUpRight } from 'lu
 
 const services = [
   {
-    title: 'PVC Panels & UV Sheets',
-    description: 'High-quality PVC panels, UV sheets, and WPC louvers for durable and stylish wall treatments.',
+    title: 'Refurbishment Services',
+    description: 'Expert structural and aesthetic renovation of existing buildings to modern standards.',
     icon: Home,
     image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1000&auto=format&fit=crop',
   },
   {
-    title: 'Designer Wallpapers',
-    description: 'Bespoke wallpaper collections ranging from modern patterns to classic elegant designs.',
-    icon: Paintbrush,
-    image: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=1000&auto=format&fit=crop',
+    title: 'Architectural Planning',
+    description: 'Comprehensive planning and design for residential and commercial building projects.',
+    icon: Building2,
+    image: 'https://images.unsplash.com/photo-1621873100346-608460144983?q=80&w=1000&auto=format&fit=crop',
   },
   {
-    title: 'Interior Decoration',
-    description: 'Complete interior solutions including vertical gardens, artificial grass, and metal decor.',
+    title: 'HSIDC & Huda Files',
+    description: 'Professional documentation and filing services for HSIDC and Huda approvals.',
+    icon: FileText,
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=1000&auto=format&fit=crop',
+  },
+  {
+    title: 'DTP & Layout Design',
+    description: 'Precise DTP file creation and architectural layout designs for various building types.',
+    icon: Paintbrush,
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop',
+  },
+  {
+    title: 'Interior Design',
+    description: 'Premium interior solutions tailored for luxury homes and office spaces.',
     icon: Compass,
     image: 'https://images.unsplash.com/photo-1581850518616-bcb8188c4436?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
-    title: 'Flooring & Blinds',
-    description: 'Premium wooden flooring and designer blinds to complete your space with luxury.',
-    icon: Building2,
-    image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop',
-  },
-  {
-    title: 'Custom Art & Paint',
-    description: 'Crystal paintings and canvas art pieces tailored to match your unique interior aesthetic.',
-    icon: FileText,
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop',
   },
 ];
 

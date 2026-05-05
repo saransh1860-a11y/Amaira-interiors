@@ -2,10 +2,10 @@ import { motion } from 'motion/react';
 import { Star, Award, ShieldCheck, Clock } from 'lucide-react';
 
 const stats = [
-  { label: 'Craftsmanship', icon: Star, text: 'Exquisite attention to every detail' },
-  { label: 'Expertise', icon: Award, text: 'Award-winning design philosophy' },
-  { label: 'Reliability', icon: ShieldCheck, text: 'Highly rated by 19+ happy clients' },
-  { label: 'Timeliness', icon: Clock, text: 'On-time project completion' },
+  { label: 'Craftsmanship', icon: Star, text: 'Exquisite attention to structural integrity' },
+  { label: 'Expertise', icon: Award, text: 'Decade of architectural design philosophy' },
+  { label: 'Reliability', icon: ShieldCheck, text: 'Highly trusted with 4.6★ Google Rating' },
+  { label: 'Timeliness', icon: Clock, text: 'On-time project documentation & delivery' },
 ];
 
 export default function About() {
@@ -33,7 +33,7 @@ export default function About() {
             
             <div className="absolute bottom-10 -right-10 z-20 bg-white p-8 rounded-2xl shadow-xl max-w-[200px] border border-luxury-gold/10 hidden md:block">
               <div className="text-4xl font-serif text-luxury-gold mb-1">10+</div>
-              <div className="text-[10px] uppercase tracking-widest font-accent font-bold opacity-60">Years of Luxury Innovations</div>
+              <div className="text-[10px] uppercase tracking-widest font-accent font-bold opacity-60">Years of Design & Architectural Excellence</div>
             </div>
           </motion.div>
 
@@ -46,13 +46,13 @@ export default function About() {
               Our Story
             </span>
             <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8">
-              Transforming Houses into <br />
-              <span className="italic">Luxury Personal Havens</span>
+              Transforming Visions into <br />
+              <span className="italic">Architectural Masterpieces</span>
             </h2>
             <p className="text-luxury-ink/70 leading-relaxed font-light mb-10 text-lg">
-              Started in the heart of Karnal, Amaira Interiors has grown into a beacon of excellence in Haryana. 
-              We believe that every interior project should be a masterpiece. Our team works tirelessly 
-              to marry contemporary trends with timeless elegance, specializing in premium PVC and wallpaper solutions.
+              Located in the heart of Karnal, Vashishth Design Studio has grown into a premier destination for interior and architectural solutions in Haryana. 
+              We specialize in refurbishments and building documentation (HSIDC, Huda). Our team works tirelessly 
+              to marry contemporary design with structural precision, ensuring every project is a masterpiece.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
